@@ -1,0 +1,115 @@
+# import * from './generated/prisma.graphql'
+type SuccessMessage {
+	message: String
+}
+
+type Mutation {
+	createUser(data: UserCreateInput!): User!
+	createItem(title: String, description: String, price: Int, inStock: String, image: String, image2: String, image3: String, image4: String, largeImage: String, largeImage2: String, largeImage3: String, largeImage4: String, author: String, ageRange: String): Item!
+
+	updateItem(id: ID!, title: String, description: String, price: Int, inStock: String, image: String, image2: String, image3: String, image4: String, largeImage: String, largeImage2: String, largeImage3: String, largeImage4: String, author: String, ageRange: String): Item!
+	deleteItem(id: ID!): Item
+
+	signup(email: String!, password: String!, location: String!, terms: Boolean!): User!
+	signin(email: String!, password: String!): User!
+	signout: SuccessMessage
+
+	deleteUser(id: ID!): User
+
+	createContact(email: String!, subject: String, message: String): SuccessMessage
+
+	requestReset(email: String!): SuccessMessage
+	resetPassword(resetToken: String!, password: String! confirmPassword: String!): User!
+
+	updatePermissions(permissions: [Permission], userId: ID!): User
+
+	addToCart(id: ID!): CartItem
+	plusToCart(id: ID!): CartItem
+	minusFromCart(id: ID!): CartItem
+	removeFromCart(id: ID!): CartItem
+	createOrder(token: String!): Order!
+
+	createRating(ratingSubject: String!, ratingDescription: String!, ratingStar: Int, ratingImage: String, itemId: ID!): Rating!
+	updateRating(id: ID!, ratingSubject: String, ratingImage: String, ratingDescription: String, ratingStar: Int): Rating!
+	deleteRating(id: ID!): Rating
+}
+ 
+type Query {
+	items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
+	item(id: ID, where: ItemWhereUniqueInput!): Item!
+	itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int, cursor: ID): ItemConnection!
+
+  	ratings(where: RatingWhereInput, orderBy: RatingOrderByInput, skip: Int, first: Int): [Rating]!
+  	rating(id: ID, where: RatingWhereUniqueInput): Rating!
+	ratingsConnection(where: RatingWhereInput, orderBy: RatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RatingConnection!
+
+	me: User
+	users: [User]!
+
+	order(id: ID!): Order
+	orders(orderBy: OrderOrderByInput): [Order]!
+}
+
+type User {
+  id: ID!
+  name: String
+  email: String!
+  terms: Boolean!
+  addressLine1: String
+  addressLine2: String
+  town: String
+  county: String!
+  postCode: String
+  location: String!
+  userImage: String
+  permissions: [Permission!]!
+  cart: [CartItem!]!
+  order: [Order]
+  orderItem: [OrderItem]
+}
+
+type Guest {
+	id: ID!
+	email: String
+	permissions: [Permission]
+	cart: [CartItem!]!
+	orders: [OrderItem]
+}
+
+type Item {
+	id: ID!
+	title: String!
+	description: String!
+	image: String
+	image2: String,
+	image3: String,
+	image4: String,
+	largeImage: String
+	largeImage2: String
+	largeImage3: String
+	largeImage4: String
+	inStock: String
+	price: Int!
+	author: String
+	ageRange: String
+	user: User
+	ratings(where: RatingWhereInput, orderBy: RatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Rating!]
+}
+
+type Rating {
+	id: ID!
+	ratingSubject: String!
+	ratingImage: String
+	ratingDescription: String!
+	ratingStar: Int
+	createdAt: DateTime
+	user: User
+	item: Item!
+}
+
+type Contact {
+	id: ID!
+	email: String!
+	subject: String
+	message: String
+}

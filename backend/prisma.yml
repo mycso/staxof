@@ -1,0 +1,12 @@
+#endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: https://eu1.prisma.sh/michael-sokan/stax-of-storiesstories/dev
+endpoint: https://stax-production-86f9f999f7.herokuapp.com/stax-prod/prod
+datamodel: datamodel.prisma
+secret: ${env:PRISMA_SECRET}
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/

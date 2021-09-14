@@ -1,0 +1,136 @@
+enum Permission {
+	ADMIN
+	BOOKAUTHOR
+	USER
+	ITEMCREATE
+	ITEMUPDATE
+	ITEMDELETE
+	PERMISSIONUPDATE
+	GUEST
+}
+
+type User {
+	id: ID! @unique @id
+	name: String
+	email: String! @unique
+	terms: Boolean! @default(value: false) 
+	addressLine1: String
+	addressLine2: String
+	town: String
+	country: String
+	county: String
+	postCode: String
+	location: String
+	userImage: String
+	password: String
+	confirmPassword: String
+	resetToken: String
+	resetTokenExpiry: Float
+	permissions: [Permission] @scalarList(strategy:RELATION)
+	item: [Item!]! @relation(name: "ItemToUser", onDelete: CASCADE)
+	rating: [Rating!]! @relation(name: "RatingToUser", onDelete: CASCADE)
+	cart: [CartItem!]! @relation(name: "CartItemToUser", onDelete: CASCADE)
+	orderItem: [OrderItem!]! @relation(name: "OrderItemToUser", onDelete: CASCADE)
+	order: [Order!]! @relation(name: "OrderToUser", onDelete: CASCADE)
+}
+
+type Guest {
+	id: ID! @unique @id
+	email: String! @unique
+	resetToken: String
+	resetTokenExpiry: Float
+	permissions: [Permission] @scalarList(strategy:RELATION)
+	item: [Item!]! @relation(name: "ItemToGuest", onDelete: CASCADE)
+	cart: [CartItem!]! @relation(name: "CartItemToGuest", onDelete: CASCADE)
+	orderItem: [OrderItem!]! @relation(name: "OrderItemToGuest", onDelete: CASCADE)
+	order: [Order!]! @relation(name: "OrderToGuest", onDelete: CASCADE)
+}
+
+type HomeCarousel {
+ 	id: ID! @unique @id
+	homepageImg1: String
+	homepageImg2: String
+	homepageImg3: String
+	homepageImg4: String
+}
+
+type Item {
+	id: ID! @unique @id
+	title: String!
+	description: String!
+	image: String
+	image2: String
+	image3: String
+	image4: String
+	largeImage: String
+	largeImage2: String
+	largeImage3: String
+	largeImage4: String
+	video: String
+	author: String
+	illustrator: String
+	price: Int!
+	taxVat: Int
+	inStock: String
+	ageRange: String
+	# deliveryMethod: String 
+	# category: Category
+	createdAt: DateTime @createdAt
+	# updatedAt: DateTime!
+	user: User! @relation(name: "ItemToUser", onDelete: SET_NULL)
+	ratings: [Rating!] @relation(name: "RatingToItem", onDelete: CASCADE)
+	cart: [CartItem!]! @relation(name: "CartItemToItem", onDelete: CASCADE)
+}
+
+type Category {
+  	id: ID! @unique @id
+  	name: String! @unique
+  	item: [Item!]!
+}
+
+type CartItem {
+	id: ID! @unique @id
+	quantity: Int! @default(value: 1)
+	item: Item @relation(name: "CartItemToItem", onDelete: SET_NULL)
+	user: User! @relation(name: "CartItemToUser", onDelete: SET_NULL)
+}
+
+type OrderItem {
+	id: ID! @unique @id
+	title: String!
+	description: String!
+	image: String!
+	largeImage: String!
+	price: Int!
+	# deliveryCost: Int!
+	quantity: Int! @default(value: 1)
+	user: User @relation(name: "OrderItemToUser", onDelete: SET_NULL)
+}
+
+type Order {
+	id: ID! @unique @id
+	items: [OrderItem!]!
+	total: Int!
+	user: User! @relation(name: "OrderToUser", onDelete: SET_NULL)
+	charge: String!
+	createdAt: DateTime! @createdAt
+	updatedAt: DateTime! @updatedAt
+}
+
+type Rating {
+	id: ID! @unique @id
+	ratingSubject: String!
+	ratingDescription: String!
+	ratingStar: Int @default(value: 0)
+	ratingImage: String
+	createdAt: DateTime! @createdAt
+	user: User! @relation(name: "RatingToUser", onDelete: SET_NULL)
+	item: Item! @relation(name: "RatingToItem", onDelete: SET_NULL)
+}
+
+type Contact {
+	id: ID! @unique @id
+	email: String!
+	subject: String
+	message: String
+}

@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Signup/> renders and matches snapshot 1`] = `
+<form
+  className="Form-sc-1xszr8q-0 fuiEQo"
+  method="post"
+  onSubmit={[Function]}
+>
+  <fieldset
+    aria-busy={false}
+    disabled={false}
+  >
+    <h2>
+      Sign Up for an Account
+    </h2>
+    <DisplayError
+      error={Object {}}
+    />
+    <label
+      htmlFor="email"
+    >
+      Email
+      <input
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        required={true}
+        type="email"
+        value=""
+      />
+    </label>
+    <label
+      htmlFor="password"
+    >
+      Password
+      <input
+        name="password"
+        onChange={[Function]}
+        pattern=".{10,}"
+        placeholder="Password"
+        required={true}
+        title="10 or more characters"
+        type="password"
+        value=""
+      />
+    </label>
+    <Signup__Terms>
+      <div
+        className="Signup__Terms-sc-1bh7ije-0 eBigCh"
+      >
+        <br />
+        <div
+          htmlFor="terms"
+        >
+          <h6
+            className="terms"
+          >
+            <input
+              className="mr-2"
+              name="terms"
+              onChange={[Function]}
+              required={true}
+              type="checkbox"
+              value={true}
+            />
+            By signing up, you agree to our 
+            <a
+              className="links"
+              href="/termsConditions"
+              target="_blank"
+            >
+              Terms of Use
+            </a>
+             and 
+            <a
+              className="links"
+              href="/privacyPolicy"
+              target="_blank"
+            >
+              Privacy Policy
+            </a>
+            .
+          </h6>
+        </div>
+        <br />
+      </div>
+    </Signup__Terms>
+    <button
+      type="submit"
+    >
+      Sign Up!
+    </button>
+  </fieldset>
+</form>
+`;

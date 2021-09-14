@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreateItem/> renders and matches snapshot 1`] = `
+Array [
+  <Form
+    data-test="form"
+    onSubmit={[Function]}
+  >
+    <form
+      className="Form-sc-1xszr8q-0 fuiEQo"
+      data-test="form"
+      onSubmit={[Function]}
+    >
+      <DisplayError
+        error={Object {}}
+      />
+      <fieldset
+        aria-busy={false}
+        disabled={false}
+      >
+        <CreateItem__StyledUploadFileBtn>
+          <div
+            className="CreateItem__StyledUploadFileBtn-cxl74w-0 dpGaFi"
+          >
+            <label
+              htmlFor="file"
+            >
+              <div>
+                Upload an image for your book
+              </div>
+              <input
+                className="upload-btn-file"
+                id="file"
+                name="file"
+                onChange={[Function]}
+                placeholder="Upload an image"
+                required={true}
+                type="file"
+              />
+            </label>
+          </div>
+        </CreateItem__StyledUploadFileBtn>
+        <label
+          htmlFor="title"
+        >
+          Title
+          <input
+            id="title"
+            name="title"
+            onChange={[Function]}
+            placeholder="Title"
+            required={true}
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          htmlFor="author"
+        >
+          Author
+          <input
+            defaultValue=""
+            id="author"
+            name="author"
+            onChange={[Function]}
+            placeholder="Book Author"
+            required={true}
+            type="text"
+          />
+        </label>
+        <label
+          htmlFor="price"
+        >
+          Price
+          <input
+            id="price"
+            name="price"
+            onChange={[Function]}
+            placeholder="Price - (e.g 499 = £4.99)"
+            required={true}
+            type="number"
+            value=""
+          />
+        </label>
+        <label
+          htmlFor="ageRange"
+        >
+          Age Range
+          <input
+            id="ageRange"
+            name="ageRange"
+            onChange={[Function]}
+            placeholder="Enter An Age Range"
+            required={true}
+            value=""
+          />
+        </label>
+        <label
+          htmlFor="description"
+        >
+          Description
+          <textarea
+            id="description"
+            name="description"
+            onChange={[Function]}
+            placeholder="Enter A Description"
+            required={true}
+            value=""
+          />
+        </label>
+        <button
+          type="submit"
+        >
+          Submit
+        </button>
+      </fieldset>
+    </form>
+  </Form>,
+  <form
+    className="Form-sc-1xszr8q-0 fuiEQo"
+    data-test="form"
+    onSubmit={[Function]}
+  >
+    <DisplayError
+      error={Object {}}
+    />
+    <fieldset
+      aria-busy={false}
+      disabled={false}
+    >
+      <CreateItem__StyledUploadFileBtn>
+        <div
+          className="CreateItem__StyledUploadFileBtn-cxl74w-0 dpGaFi"
+        >
+          <label
+            htmlFor="file"
+          >
+            <div>
+              Upload an image for your book
+            </div>
+            <input
+              className="upload-btn-file"
+              id="file"
+              name="file"
+              onChange={[Function]}
+              placeholder="Upload an image"
+              required={true}
+              type="file"
+            />
+          </label>
+        </div>
+      </CreateItem__StyledUploadFileBtn>
+      <label
+        htmlFor="title"
+      >
+        Title
+        <input
+          id="title"
+          name="title"
+          onChange={[Function]}
+          placeholder="Title"
+          required={true}
+          type="text"
+          value=""
+        />
+      </label>
+      <label
+        htmlFor="author"
+      >
+        Author
+        <input
+          defaultValue=""
+          id="author"
+          name="author"
+          onChange={[Function]}
+          placeholder="Book Author"
+          required={true}
+          type="text"
+        />
+      </label>
+      <label
+        htmlFor="price"
+      >
+        Price
+        <input
+          id="price"
+          name="price"
+          onChange={[Function]}
+          placeholder="Price - (e.g 499 = £4.99)"
+          required={true}
+          type="number"
+          value=""
+        />
+      </label>
+      <label
+        htmlFor="ageRange"
+      >
+        Age Range
+        <input
+          id="ageRange"
+          name="ageRange"
+          onChange={[Function]}
+          placeholder="Enter An Age Range"
+          required={true}
+          value=""
+        />
+      </label>
+      <label
+        htmlFor="description"
+      >
+        Description
+        <textarea
+          id="description"
+          name="description"
+          onChange={[Function]}
+          placeholder="Enter A Description"
+          required={true}
+          value=""
+        />
+      </label>
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </fieldset>
+  </form>,
+]
+`;
